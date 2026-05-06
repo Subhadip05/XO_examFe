@@ -1,58 +1,100 @@
 <mat-card class="mtop20">
-    <mat-action-list>
+  <mat-action-list>
+    <div mat-subheader>
+      <b>Admin Menu</b>
+    </div>
 
-        <div mat-subheader>
-            <b>Admin Menu</b>
-        </div>
+    <button mat-list-item routerLink="/admin">
+      <mat-icon mat-list-icon style="margin-right: 2px">home</mat-icon>
+      Home
+    </button>
 
-        <button mat-list-item
-        routerLink="/admin">
-        <mat-icon mat-list-icon style="margin-right: 2px;">home</mat-icon>
-            Home
-        </button>
+    <button mat-list-item routerLink="/admin/profile">
+      <mat-icon mat-list-icon style="margin-right: 2px"
+        >account_circle</mat-icon
+      >
+      Proflie
+    </button>
 
-        <button mat-list-item 
-        routerLink="/admin/profile">
-        <mat-icon mat-list-icon style="margin-right: 2px;">account_circle</mat-icon>
-            Proflie
-        </button>
+    <!-- <button mat-list-item routerLink="/admin/categories">
+      <mat-icon mat-list-icon style="margin-right: 2px">category</mat-icon>
+      Categories
+    </button>
 
-        <button mat-list-item 
-        routerLink="/admin/categories">
-        <mat-icon mat-list-icon style="margin-right: 2px;">category</mat-icon>
-            Categories
-        </button>
+    <button mat-list-item routerLink="/admin/add-category">
+      <mat-icon mat-list-icon style="margin-right: 2px">library_add</mat-icon>
+      Add Categories
+    </button> -->
 
-        <button mat-list-item 
-        routerLink="/admin/add-category">
-        <mat-icon mat-list-icon style="margin-right: 2px;">library_add</mat-icon>
-            Add Categories
-        </button>
+    <mat-expansion-panel
+      class="mat-elevation-z0"
+      style="background: transparent"
+    >
+      <mat-expansion-panel-header style="padding: 0 16px">
+        <mat-panel-title style="display: flex; align-items: center">
+          <mat-icon style="margin-right: 8px">category</mat-icon>
+          Categories
+        </mat-panel-title>
+      </mat-expansion-panel-header>
 
-        <button mat-list-item 
-        routerLink="/admin/quizzes">
-        <mat-icon mat-list-icon style="margin-right: 2px;">psychology_alt</mat-icon>
-            Quizzes
-        </button>
+      <button mat-list-item routerLink="/admin/categories">
+        <mat-icon mat-list-icon style="margin-right: 2px">category</mat-icon>
+        Categories List
+      </button>
 
-        <button mat-list-item 
-        routerLink="/admin/add-quiz">
-        <mat-icon mat-list-icon style="margin-right: 2px;">add_circle</mat-icon>
-            Add Quiz
-        </button>
+      <button mat-list-item routerLink="/admin/add-category">
+        <mat-icon matListItemIcon style="margin-right: 8px">add</mat-icon>
+        Add Categories
+      </button>
+    </mat-expansion-panel>
 
-        <mat-card-content class="mtop10">
-            <b>Note:</b> 
-            <br>
-            For adding question you have to go 'All Question' button for particular Quiz and then 'Add Question'
-        </mat-card-content>
+    <!-- <button mat-list-item routerLink="/admin/quizzes">
+      <mat-icon mat-list-icon style="margin-right: 2px"
+        >psychology_alt</mat-icon
+      >
+      Quizzes
+    </button>
 
-        <!-- <button mat-list-item 
+    <button mat-list-item routerLink="/admin/add-quiz">
+      <mat-icon mat-list-icon style="margin-right: 2px">add_circle</mat-icon>
+      Add Quiz
+    </button> -->
+
+    <mat-expansion-panel
+      class="mat-elevation-z0"
+      style="background: transparent"
+    >
+      <mat-expansion-panel-header style="padding: 0 16px">
+        <mat-panel-title style="display: flex; align-items: center">
+          <mat-icon style="margin-right: 8px">psychology_alt</mat-icon>
+          Quizzes
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <button mat-list-item routerLink="/admin/quizzes">
+        <mat-icon mat-list-icon style="margin-right: 2px"
+          >psychology_alt</mat-icon
+        >
+        Quizzes List
+      </button>
+
+      <button mat-list-item routerLink="/admin/add-quiz">
+        <mat-icon matListItemIcon style="margin-right: 8px">add</mat-icon>
+        Add Quiz
+      </button>
+    </mat-expansion-panel>
+
+    <mat-card-content class="mtop10">
+      <b>Note:</b>
+      <br />
+      For adding question you have to go 'All Question' button for particular
+      Quiz and then 'Add Question'
+    </mat-card-content>
+
+    <!-- <button mat-list-item 
         [routerLink]="'/login'">
         <mat-icon mat-list-icon style="margin-right: 2px;">logout</mat-icon>
             Logout
         </button> -->
-       
-
-    </mat-action-list>
+  </mat-action-list>
 </mat-card>

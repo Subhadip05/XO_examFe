@@ -55,3 +55,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mtop5{
     margin-top: 5px !important;
 }
+
+.loginsection_bg {
+  margin: 0 auto;
+  height: calc(100vh - 0px);
+  padding: 0 0;
+  width: 100%;
+  background-attachment: fixed;
+  background-image: url("./assets/login-bg.png");
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+}
