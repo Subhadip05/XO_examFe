@@ -17,7 +17,7 @@
 
             <mat-card-content>
                 <p><b>Description:</b> {{q.description}}.</p>
-                <p><b>Publish Status:</b> {{q.active}}</p>
+                <p><b>Publish Status:</b> {{q.active ? 'Yes': 'No'}}</p>
             </mat-card-content>
 
         </mat-card-header>
@@ -27,7 +27,7 @@
 
             <button 
             [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title"
-            mat-stroked-button color="primary" >All Question</button>
+            mat-stroked-button color="primary" >All Questions</button>
 
             <button mat-stroked-button color="accent" class="mleft10">
                 Total Marks: {{q.maxMarks}}
