@@ -56,7 +56,7 @@
                         <!-- active field -->
                         <mat-slide-toggle class="mtop10" color="primary" 
                         [(ngModel)]="quizData.active" name="active">
-                            Publish Status: {{quizData.active}}
+                            Publish Status: {{quizData.active? 'Yes' : 'No'}}
                         </mat-slide-toggle>
 
 
@@ -76,7 +76,7 @@
 
                           <!-- button -->
                         <div class="container text-center mtop20">
-                            <button mat-raised-button color="accent" type="submit">Add New Quiz</button>
+                            <button mat-raised-button color="accent" type="submit">Save</button>
                         </div>
 
                     </form>
