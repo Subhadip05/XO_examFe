@@ -1,47 +1,57 @@
 <div class="bootstrap-wrapper">
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <mat-card class="mtop20 mbottom20 color-custom-card">
+      <h2 class="mtop10 mleft10">Available Quizzes</h2>
 
-        <mat-card class="mtop20 mbottom20">
-            <h2 class="mtop10 mleft10">Available Quizzes</h2>
-        
+      <div class="row" *ngIf="quizzes">
+        <div class="col-md-6" *ngFor="let q of quizzes">
+          <mat-card class="mtop10">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>
+                <h2>{{ q.title }}</h2>
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{ q.category.title }}
+              </mat-card-subtitle>
+            </mat-card-header>
 
-        <div class="row" *ngIf="quizzes">
-            <div class="col-md-6" *ngFor="let q of quizzes">
+            <mat-card-content>
+              <p class="truncate">{{ q.description }}</p>
+            </mat-card-content>
 
-
-                <mat-card class="mtop10">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>
-                            <h2>{{q.title}}</h2>
-                        </mat-card-title>
-                        <mat-card-subtitle>
-                            {{q.category.title}}
-                        </mat-card-subtitle>
-                    </mat-card-header>
-
-                    <mat-card-content>
-                        <p class="truncate">{{q.description}}</p>
-                    </mat-card-content>
-                    
-                    <mat-card-actions>
-                        <button style="margin-left: 5px;" mat-button color="primary">Q.Numbers: {{q.numberOfQuestions}}</button>
-                        <button style="margin-left: 5px;" mat-button color="accent">Max.Mark: {{q.maxMarks}}</button>
-                        <button style="margin-left: 5px;" mat-raised-button color="primary">View</button>
-                        <button style="margin-left: 10px;" [routerLink]="'/user-dashboard/instructions/'+q.qid" mat-raised-button color="accent">Start</button>
-                    </mat-card-actions>
-
-                </mat-card>
-
-
-            </div>
-
-            <div class="col-md-12 mleft10" *ngIf="quizzes.length == 0">
-                <mat-card-content>
-                    <h2>No Data in this Category</h2>
-                </mat-card-content>
-            </div>
+            <mat-card-actions>
+              <button style="margin-left: 5px" mat-button color="primary">
+                Q.Numbers: {{ q.numberOfQuestions }}
+              </button>
+              <button style="margin-left: 5px" mat-button color="accent">
+                Max.Mark: {{ q.maxMarks }}
+              </button>
+              <button
+                style="margin-left: 5px"
+                mat-raised-button
+                color="primary"
+              >
+                View
+              </button>
+              <button
+                style="margin-left: 10px"
+                [routerLink]="'/user-dashboard/instructions/' + q.qid"
+                mat-raised-button
+                color="accent"
+              >
+                Start
+              </button>
+            </mat-card-actions>
+          </mat-card>
         </div>
+
+        <div class="col-md-12 mleft10" *ngIf="quizzes.length == 0">
+          <mat-card-content>
+            <h2>No Data in this Category</h2>
+          </mat-card-content>
+        </div>
+      </div>
     </mat-card>
-    </div>
+  </div>
 </div>

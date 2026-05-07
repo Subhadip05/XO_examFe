@@ -1,70 +1,67 @@
-<mat-card class="mtop20">
-    <h2 class="mleft10 mtop10">Quizzes</h2>
+<mat-card class="mtop20 color-custom-card">
+  <h2 class="mleft10 mtop10">Quizzes</h2>
 
+  <mat-card class="mtop5 height: 25px" *ngFor="let q of quizzes">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        {{ q.title }}
+      </mat-card-title>
 
+      <mat-card-subtitle>
+        <b>Category:</b> {{ q.category.title }}
+      </mat-card-subtitle>
 
-    <mat-card class="mtop5 height: 25px" *ngFor="let q of quizzes">
-    
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>
-                {{q.title}}
-            </mat-card-title>
+      <mat-card-content>
+        <p><b>Description:</b> {{ q.description }}.</p>
+        <p><b>Publish Status:</b> {{ q.active ? "Yes" : "No" }}</p>
+      </mat-card-content>
+    </mat-card-header>
 
-            <mat-card-subtitle>
-                <b>Category:</b> {{q.category.title}}
-            </mat-card-subtitle>
+    <mat-card-actions>
+      <button
+        [routerLink]="'/admin/view-questions/' + q.qid + '/' + q.title"
+        mat-stroked-button
+        color="primary"
+      >
+        All Questions
+      </button>
 
-            <mat-card-content>
-                <p><b>Description:</b> {{q.description}}.</p>
-                <p><b>Publish Status:</b> {{q.active ? 'Yes': 'No'}}</p>
-            </mat-card-content>
+      <button mat-stroked-button color="accent" class="mleft10">
+        Total Marks: {{ q.maxMarks }}
+      </button>
 
-        </mat-card-header>
+      <button mat-stroked-button color="accent" class="mleft10">
+        Number Of Questions: {{ q.numberOfQuestions }}
+      </button>
 
+      <button mat-stroked-button color="warn" class="mleft10">Attempts</button>
 
-        <mat-card-actions>
+      <!-- why we can't get/access integer value(q.qId) from ts file -->
+      <!--issue solved : qId will be qid -->
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="'/admin/quiz/' + q.qid"
+        class="mleft20"
+      >
+        Update
+      </button>
 
-            <button 
-            [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title"
-            mat-stroked-button color="primary" >All Questions</button>
-
-            <button mat-stroked-button color="accent" class="mleft10">
-                Total Marks: {{q.maxMarks}}
-            </button>
-
-            <button mat-stroked-button color="accent" class="mleft10">
-                Number Of Questions: {{q.numberOfQuestions}}
-            </button>
-            
-            <button mat-stroked-button color="warn" class="mleft10">
-                Attempts
-            </button>
-
-            
-             <!-- why we can't get/access integer value(q.qId) from ts file -->
-              <!--issue solved : qId will be qid -->
-            <button mat-raised-button color="primary" 
-            [routerLink]=" '/admin/quiz/'+q.qid"
-            class="mleft20">Update</button>
-           
-            <button mat-raised-button (click)="deleteQuiz(q.qid)"
-             color="accent" class="mleft10">
-             Delete 
-            </button>
-
-        </mat-card-actions>
-    
-    </mat-card>
-
-
+      <button
+        mat-raised-button
+        (click)="deleteQuiz(q.qid)"
+        color="accent"
+        class="mleft10"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </mat-card>
 
-
 <div class="container text-center mtop20 mbottom10">
-
-    <button routerLink="/admin/add-quiz" mat-raised-button color="accent">
-       Add New Quiz 
-    </button>
-
+  <button routerLink="/admin/add-quiz" mat-raised-button color="accent">
+    Add New Quiz
+  </button>
 </div>

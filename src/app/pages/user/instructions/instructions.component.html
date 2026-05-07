@@ -1,56 +1,73 @@
 <div class="bootstrap-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <mat-card class="mtop20 mbottom20">
-                    <mat-card-header>
-                        <mat-card-title>
-                            Read the instructions of this page carefully
-                        </mat-card-title>
-                        <mat-card-subtitle>One more step to go</mat-card-subtitle>
-                    </mat-card-header>
-    
-                    <mat-card-content class="mtop10">
-                        <h1>Quiz Name : {{quiz.title}}</h1>
-                        <p> Description : {{quiz.description}}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mtop20 mbottom20 color-custom-card">
+          <mat-card-header>
+            <mat-card-title>
+              Read the instructions of this page carefully
+            </mat-card-title>
+            <mat-card-subtitle>One more step to go</mat-card-subtitle>
+          </mat-card-header>
 
-                        <mat-divider></mat-divider>
-                        <br/>
+          <mat-card-content class="mtop10">
+            <h1>Quiz Name : {{ quiz.title }}</h1>
+            <p>Description : {{ quiz.description }}</p>
 
-                        <h1>Important Instructions</h1>
+            <mat-divider></mat-divider>
+            <br />
 
-                        <!--time: 2 minutes per question -->
-                        <ul>
-                            <li>This quiz is only for practice purpose.</li>
-                            <li>You can attempt the quiz any number of time.</li>
-                            <li>There are <b>{{quiz.numberOfQuestions}} questions</b> in this quiz.</li>
-                            <li>Each questions carries <b>{{quiz.maxMarks / quiz.numberOfQuestions}} marks</b> .</li>
-                            <li>No negative marking for wrong answer.</li>
-                            <li>You have to submit quiz with in <b>{{quiz.numberOfQuestions*2}} minutes</b>.</li>
-                            <li>All questions are MCQ type.</li>
-                        </ul>
+            <h1>Important Instructions</h1>
 
-                        <mat-divider></mat-divider>
-                        <br/>
-                        <h1>Attempting Quiz</h1>
-                        <ul>
-                            <li>Click <b>Start Quiz</b> button to start the quiz</li>
-                            <li>The time will start the moment you click the Start Quiz button</li>
-                            <li>You can not resume this quiz , if interrupted due to any reason.</li>
-                            <li>Scroll down to move to the next question.</li>
-                            <li>Click on Submit Quiz button on completion of the quiz.</li>
-                            <li>Report of the test is automatically generated in the form of PDF copy</li>
-                        </ul>
-                    </mat-card-content>
-    
-                    <mat-card-actions>
-                        <div class="container text-center mtop10">
-                            <button (click)="startQuiz()" mat-raised-button color="accent">Start Quiz</button>
-                        </div>
-                    </mat-card-actions>
-                </mat-card>
-                
+            <!--time: 2 minutes per question -->
+            <ul>
+              <li>This quiz is only for practice purpose.</li>
+              <li>You can attempt the quiz any number of time.</li>
+              <li>
+                There are <b>{{ quiz.numberOfQuestions }} questions</b> in this
+                quiz.
+              </li>
+              <li>
+                Each questions carries
+                <b>{{ quiz.maxMarks / quiz.numberOfQuestions }} marks</b> .
+              </li>
+              <li>No negative marking for wrong answer.</li>
+              <li>
+                You have to submit quiz with in
+                <b>{{ quiz.numberOfQuestions * 2 }} minutes</b>.
+              </li>
+              <li>All questions are MCQ type.</li>
+            </ul>
+
+            <mat-divider></mat-divider>
+            <br />
+            <h1>Attempting Quiz</h1>
+            <ul>
+              <li>Click <b>Start Quiz</b> button to start the quiz</li>
+              <li>
+                The time will start the moment you click the Start Quiz button
+              </li>
+              <li>
+                You can not resume this quiz , if interrupted due to any reason.
+              </li>
+              <li>Scroll down to move to the next question.</li>
+              <li>Click on Submit Quiz button on completion of the quiz.</li>
+              <li>
+                Report of the test is automatically generated in the form of PDF
+                copy
+              </li>
+            </ul>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <div class="container text-center mtop10">
+              <button (click)="startQuiz()" mat-raised-button color="accent">
+                Start Quiz
+              </button>
             </div>
-        </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
+  </div>
 </div>

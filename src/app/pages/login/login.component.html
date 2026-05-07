@@ -1,67 +1,69 @@
 <div class="bootstrap-wrapper loginsection_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-
-
-                <mat-card style="margin-top: 30px;">
-
-                    <mat-card-header>
-                        <!-- Logo and Heading -->
-                      <div class="container text-center">
-                        <img mat-card-md-image text center src="../../../assets/logo.png" style="height: 55px; width: 70px;">
-                        <mat-card-title>Welcome to Login Page !</mat-card-title>
-                      </div>
-                    </mat-card-header>
-
-
-
-                    <!-- {{loginData | json}} -->
-                     <!--UserName and User Password Input-->
-                    <mat-card-content class="mt-2">
-                        <form (ngSubmit)="formSubmit()">
-                            <mat-form-field class="full-width" appearance="outline">
-                                <mat-label>User Name</mat-label>
-                                <input
-                                [(ngModel)]="loginData.username" 
-                                name="username"
-                                required matInput
-                                 placeholder="Enter Your Username">
-                                <!-- <mat-hint>Entere valid User Name</mat-hint> -->
-                            </mat-form-field>
-        
-                            <mat-form-field class="full-width" appearance="outline">
-                                <mat-label>User Password</mat-label>
-                                <input 
-                                [(ngModel)]="loginData.password"
-                                name="password"
-                                type="password" 
-                                required matInput placeholder="Enter Your Username">
-                            </mat-form-field>
-
-                             <!-- LOgin and Reset Button -->
-                            <mat-card-actions>
-                                <div class="container text-center">
-                                    <button mat-raised-button color="primary" type="submit">Login</button>
-                                    <button style="margin-left: 20px;" mat-raised-button color="accent">Reset</button>
-                                </div>
-                            </mat-card-actions>
-
-                        </form>
-                    </mat-card-content>
-
-
-                    
-
-
-                </mat-card>
-
-
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card style="margin-top: 30px" class="color-custom-card">
+          <mat-card-header>
+            <!-- Logo and Heading -->
+            <div class="container text-center">
+              <img
+                mat-card-md-image
+                text
+                center
+                src="../../../assets/logo.png"
+                style="height: 55px; width: 70px"
+              />
+              <mat-card-title>Welcome to Login Page !</mat-card-title>
             </div>
-        </div>
+          </mat-card-header>
+
+          <!-- {{loginData | json}} -->
+          <!--UserName and User Password Input-->
+          <mat-card-content class="mt-2">
+            <form (ngSubmit)="formSubmit()">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input
+                  [(ngModel)]="loginData.username"
+                  name="username"
+                  required
+                  matInput
+                  placeholder="Enter Your Username"
+                />
+                <!-- <mat-hint>Entere valid User Name</mat-hint> -->
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Password</mat-label>
+                <input
+                  [(ngModel)]="loginData.password"
+                  name="password"
+                  type="password"
+                  required
+                  matInput
+                  placeholder="Enter Your Username"
+                />
+              </mat-form-field>
+
+              <!-- LOgin and Reset Button -->
+              <mat-card-actions>
+                <div class="container text-center">
+                  <button mat-raised-button color="primary" type="submit">
+                    Login
+                  </button>
+                  <button
+                    style="margin-left: 20px"
+                    mat-raised-button
+                    color="accent"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </mat-card-actions>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
+  </div>
 </div>
-
-
-
-

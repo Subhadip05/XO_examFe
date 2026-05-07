@@ -1,59 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
-    height: 100%;
-    background-color: aliceblue; 
+html,
+body {
+  height: 100%;
+  background-color: aliceblue;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.text-center{
-    text-align: center;
-}
-
-
-.mleft20{
-    margin-left: 20px !important;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mright20{
-    margin-right: 20px !important;
+.text-center {
+  text-align: center;
 }
 
-.mtop20{
-    margin-top: 20px !important;
+.mleft20 {
+  margin-left: 20px !important;
 }
 
-.mbottom20{
-    margin-bottom: 20px !important;
+.mright20 {
+  margin-right: 20px !important;
 }
 
-
-.mleft10{
-    margin-left: 10px !important;
+.mtop20 {
+  margin-top: 20px !important;
 }
 
-.mright10{
-    margin-right: 10px !important;
+.mbottom20 {
+  margin-bottom: 20px !important;
 }
 
-.mtop10{
-    margin-top: 10px !important;
+.mleft10 {
+  margin-left: 10px !important;
 }
 
-.mbottom10{
-    margin-bottom: 10px !important;
-}
-.mbottom30{
-    margin-bottom: 30px !important;
+.mright10 {
+  margin-right: 10px !important;
 }
 
-
-.mtop30{
-    margin-top: 30px !important;
+.mtop10 {
+  margin-top: 10px !important;
 }
 
-.mtop5{
-    margin-top: 5px !important;
+.mbottom10 {
+  margin-bottom: 10px !important;
+}
+.mbottom30 {
+  margin-bottom: 30px !important;
+}
+
+.mtop30 {
+  margin-top: 30px !important;
+}
+
+.mtop5 {
+  margin-top: 5px !important;
 }
 
 .loginsection_bg {
@@ -66,4 +67,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-position: center center;
   background-size: cover;
   position: relative;
+}
+
+.color-custom-card {
+  background-color: #ecf2f3 !important;
+  box-shadow: 0 4px 20px 0 #28a2a2 !important;
+  border-radius: 12px !important; /* Slightly rounded corners */
+  padding: 10px;
 }
