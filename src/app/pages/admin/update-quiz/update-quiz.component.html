@@ -30,7 +30,7 @@
                 name="description"
                 [(ngModel)]="quiz.description"
                 matInput
-                rows="5"
+                rows="2"
                 placeholder="Enter description here: "
               ></textarea>
             </mat-form-field>
@@ -74,7 +74,7 @@
               [(ngModel)]="quiz.active"
               name="active"
             >
-              Publish Status: {{ quiz.active }}
+              Publish Status: {{ quiz.active ? "Yes" : "No" }}
             </mat-slide-toggle>
 
             <br />
@@ -87,10 +87,17 @@
                 }
               </mat-select>
             </mat-form-field>
-            <p>Selected Category: {{ quiz.category.cid }}</p>
+            <!-- <p>Selected Category: {{ quiz.category.cid }}</p> -->
 
-            <!-- button -->
-            <div class="container text-center mtop20">
+            <div class="container d-flex justify-content-center gap-2 mtop20">
+              <button
+                routerLink="/admin/quizzes"
+                mat-raised-button
+                color="basic"
+              >
+                Back
+              </button>
+
               <button mat-raised-button color="accent" type="submit">
                 Update
               </button>

@@ -1,56 +1,54 @@
 <mat-card class="mtop20 color-custom-card">
-    <h2 class="mleft10 mtop10">Add New Category</h2>
+  <h2 class="mleft10 mtop10">Add New Category</h2>
 
+  <!-- {{category | json }} -->
 
-    <!-- {{category | json }} -->
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form (ngSubmit)="formSubmit()">
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Title</mat-label>
 
-    <mat-card-content>
+              <!-- you can make the tile as required field adding requird after input keyword-->
+              <input
+                type="text"
+                name="title"
+                matInput
+                placeholder="Enter Here : "
+                [(ngModel)]="category.title"
+              />
+            </mat-form-field>
 
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Description</mat-label>
 
-        <div class="bootstrap-wrapper">
+              <textarea
+                name="description"
+                matInput
+                placeholder="Enter Category description here : "
+                rows="5"
+                [(ngModel)]="category.description"
+              ></textarea>
+            </mat-form-field>
 
-            <div class="row">
+            <div class="container d-flex justify-content-center gap-2 mtop20">
+              <button
+                routerLink="/admin/categories"
+                mat-raised-button
+                color="basic"
+              >
+                Back
+              </button>
 
-                <div class="col-md-8 offset-md-2">
-
-
-                    <form (ngSubmit)="formSubmit()">
-
-                        <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Title</mat-label>
-                
-                            <!-- you can make the tile as required field adding requird after input keyword-->
-                            <input type="text" name="title" 
-                            matInput placeholder="Enter Here : "
-                            [(ngModel)]="category.title"/>
-                
-                        </mat-form-field>
-
-
-                        <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Description</mat-label>
-    
-                            <textarea name="description" matInput
-                            placeholder="Enter Category description here : "
-                            rows="5"
-                            [(ngModel)]="category.description"></textarea>
-                
-                        </mat-form-field>
-
-
-                        <!-- button -->
-                        <div class="container text-center mt15">
-                            <button mat-raised-button color="accent">Save</button>
-                        </div>
-
-                    </form>
-                     
-                </div>
-
+              <button mat-raised-button color="accent" type="submit">
+                Save
+              </button>
             </div>
-
+          </form>
         </div>
-
-    </mat-card-content>
-
+      </div>
+    </div>
+  </mat-card-content>
 </mat-card>

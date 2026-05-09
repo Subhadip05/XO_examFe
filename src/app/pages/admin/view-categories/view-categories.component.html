@@ -1,29 +1,22 @@
 <mat-card class="mtop20 color-custom-card">
-    <h2 class="mleft10 mtop10">All Categories</h2>
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h2 class="m-0">All Categories</h2>
 
-    <mat-card class="mtop10" *ngFor="let c of categories">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>
-                {{c.title}}
-            </mat-card-title>
-
-            <mat-card-subtitle>
-                {{c.description}}
-            </mat-card-subtitle>
-
-        </mat-card-header>
-    </mat-card>
-
-</mat-card>
-
-
-<div class="container text-center mtop20 mbottom10">
-
-    <button routerLink="/admin/add-category"
-    mat-raised-button color="accent">
-       Add New Category 
+    <button routerLink="/admin/add-category" mat-raised-button color="accent">
+      Add New Category
     </button>
+  </div>
 
-</div>
+  <mat-card class="mtop10" *ngFor="let c of categories">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        {{ c.title }}
+      </mat-card-title>
 
+      <mat-card-subtitle>
+        {{ c.description }}
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</mat-card>

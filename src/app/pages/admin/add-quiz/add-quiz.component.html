@@ -87,10 +87,17 @@
                 }
               </mat-select>
             </mat-form-field>
-            <p>Selected Category: {{ quizData.category.cid }}</p>
+            <!-- <p>Selected Category: {{ quizData.category.cid }}</p> -->
 
-            <!-- button -->
-            <div class="container text-center mtop20">
+            <div class="container d-flex justify-content-center gap-2 mtop20">
+              <button
+                routerLink="/admin/quizzes"
+                mat-raised-button
+                color="basic"
+              >
+                Back
+              </button>
+
               <button mat-raised-button color="accent" type="submit">
                 Save
               </button>

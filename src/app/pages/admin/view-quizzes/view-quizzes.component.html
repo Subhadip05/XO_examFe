@@ -1,5 +1,11 @@
 <mat-card class="mtop20 color-custom-card">
-  <h2 class="mleft10 mtop10">Quizzes</h2>
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h2 class="m-0">Quizzes</h2>
+
+    <button routerLink="/admin/add-quiz" mat-raised-button color="accent">
+      Add New Quiz
+    </button>
+  </div>
 
   <mat-card class="mtop5 height: 25px" *ngFor="let q of quizzes">
     <mat-card-header>
@@ -59,9 +65,3 @@
     </mat-card-actions>
   </mat-card>
 </mat-card>
-
-<div class="container text-center mtop20 mbottom10">
-  <button routerLink="/admin/add-quiz" mat-raised-button color="accent">
-    Add New Quiz
-  </button>
-</div>
