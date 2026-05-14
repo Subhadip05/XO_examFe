@@ -1,75 +1,86 @@
-<mat-card class="mtop20">
-    <h2 class="mleft10 mtop10">Questions of {{qTitle}} Quiz</h2>
+<mat-card class="mtop20 color-custom-card">
+  <h2 class="mleft10 mtop10">Questions of {{ qTitle }} Quiz</h2>
 
-    <div class="bootstrap-wrapper">
-        <div class="row">
-            <div class="col-md-12">
+  <div class="bootstrap-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="container mbottom10 d-flex gap-2">
+          <button
+            [routerLink]="'/admin/add-question/' + qId + '/' + qTitle"
+            class="text-center"
+            mat-raised-button
+            color="accent"
+          >
+            Add Question
+          </button>
 
-                <div class="container mbottom10">
-                    <button [routerLink]="'/admin/add-question/'+qId+'/'+qTitle"
-                    class="text-center"
-                    mat-raised-button color="accent">
-                       Add Question 
-                    </button>
-                </div>
-
-                <mat-card *ngFor="let qs of questions; let i =index " class="mtop10">
-                
-                    <mat-card-content class="mtop10">
-
-                        <!-- Question -->
-                        <p class="mleft10"><b>Q {{i+1}}.</b>  <span><b> {{qs.content}}</b></span></p>
-
-                        <!-- options -->
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p><b>(1)</b> {{qs.option1}}</p>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <p><b>(2)</b> {{qs.option2}}</p>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p><b>(3)</b> {{qs.option3}}</p>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <p><b>(4)</b> {{qs.option4}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- answer -->
-                        <p class="mleft10 mtop10"> <b>Correct answer</b>: {{qs.answer}}</p>
-
-                        <!-- for dividing question -->
-                        <mat-divider></mat-divider>
-
-                        <!-- Question delete and update button -->
-                        <mat-card-actions>
-                            <button (click)="deleteQuestion(qs.quesId)" mat-stroked-button color="warn" class="mleft10">
-                                Delete 
-                            </button>
-    
-                            <!-- <button mat-stroked-button color="primary" class="mleft10">
-                                Update 
-                            </button> -->
-                        </mat-card-actions>
-
-                    </mat-card-content>
-                    
-            
-                </mat-card>
-
-
-            </div>
+          <button
+            [routerLink]="'/admin/quizzes'"
+            class="text-center"
+            mat-raised-button
+            color="basic"
+          >
+            Back
+          </button>
         </div>
 
+        <mat-card *ngFor="let qs of questions; let i = index" class="mtop10">
+          <mat-card-content class="mtop10">
+            <!-- Question -->
+            <p class="mleft10">
+              <b>Q {{ i + 1 }}.</b>
+              <span
+                ><b> {{ qs.content }}</b></span
+              >
+            </p>
+
+            <!-- options -->
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <p><b>(1)</b> {{ qs.option1 }}</p>
+                </div>
+
+                <div class="col-md-6">
+                  <p><b>(2)</b> {{ qs.option2 }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p><b>(3)</b> {{ qs.option3 }}</p>
+                </div>
+
+                <div class="col-md-6">
+                  <p><b>(4)</b> {{ qs.option4 }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- answer -->
+            <p class="mleft10 mtop10"><b>Correct answer</b>: {{ qs.answer }}</p>
+
+            <!-- for dividing question -->
+            <mat-divider></mat-divider>
+
+            <!-- Question delete and update button -->
+            <mat-card-actions>
+              <button
+                (click)="deleteQuestion(qs.quesId)"
+                mat-stroked-button
+                color="warn"
+                class="mleft10"
+              >
+                Delete
+              </button>
+
+              <!-- <button mat-stroked-button color="primary" class="mleft10">
+                Update
+              </button> -->
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-
+  </div>
 </mat-card>
-

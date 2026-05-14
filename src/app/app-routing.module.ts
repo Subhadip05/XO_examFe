@@ -22,9 +22,9 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
 
 const routes: Routes = [
   {
-    path : '',
-    component : HomeComponent,
-    pathMatch :'full',
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
   {
     path: 'signup',
@@ -32,15 +32,20 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path : 'login',
-    component : LoginComponent,
-    pathMatch : 'full',
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
   },
   {
-    path : 'admin',
-    component : AdminDashboardComponent,
-    canActivate : [adminGuard],
-    children:[
+    path: 'home',
+    component: HomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    canActivate: [adminGuard],
+    children: [
       {
         path: '',
         component: WelcomeComponent,
@@ -50,43 +55,43 @@ const routes: Routes = [
         component: ProfileComponent,
       },
       {
-        path : 'categories',
-        component : ViewCategoriesComponent,
+        path: 'categories',
+        component: ViewCategoriesComponent,
       },
       {
-        path : 'add-category',
-        component : AddCategoryComponent,
+        path: 'add-category',
+        component: AddCategoryComponent,
       },
       {
-        path : 'quizzes',
-        component : ViewQuizzesComponent,
+        path: 'quizzes',
+        component: ViewQuizzesComponent,
       },
       {
-        path : 'add-quiz',
-        component : AddQuizComponent,
+        path: 'add-quiz',
+        component: AddQuizComponent,
       },
       {
-        path: "quiz/:qid",
-        component : UpdateQuizComponent,
+        path: 'quiz/:qid',
+        component: UpdateQuizComponent,
       },
       {
-        path : 'view-questions/:qid/:title',
-        component : ViewQuestionsComponent,
+        path: 'view-questions/:qid/:title',
+        component: ViewQuestionsComponent,
       },
       {
-        path: "add-question/:qid/:title",
-        component : AddQuestionComponent,
+        path: 'add-question/:qid/:title',
+        component: AddQuestionComponent,
       },
     ],
   },
   {
-    path : 'user-dashboard',
-    component : UserDashboardComponent,
-    canActivate : [normalUserGuard],
-    children:[
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
+    canActivate: [normalUserGuard],
+    children: [
       {
         path: ':catId',
-        component: LoadQuizComponent
+        component: LoadQuizComponent,
       },
       {
         path: 'instructions/:qid',
@@ -95,13 +100,13 @@ const routes: Routes = [
     ],
   },
   {
-    path : 'start-quiz/:qid',
-    component : StartQuizComponent,
+    path: 'start-quiz/:qid',
+    component: StartQuizComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
