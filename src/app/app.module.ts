@@ -13,7 +13,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -47,6 +47,7 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     LoadQuizComponent,
     InstructionsComponent,
     StartQuizComponent,
+    UpdateQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +81,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
     MatToolbarModule,

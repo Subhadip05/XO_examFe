@@ -7,7 +7,7 @@
     </button>
   </div>
 
-  <mat-card class="mtop5 height: 25px" *ngFor="let q of quizzes">
+  <mat-card class="mtop5" *ngFor="let q of quizzes">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>
@@ -24,44 +24,37 @@
       </mat-card-content>
     </mat-card-header>
 
-    <mat-card-actions>
-      <button
-        [routerLink]="'/admin/view-questions/' + q.qid + '/' + q.title"
-        mat-stroked-button
-        color="primary"
-      >
-        All Questions
-      </button>
+    <mat-card-actions
+      class="w-100 d-flex flex-wrap row-gap-2 align-items-center"
+    >
+      <div class="me-auto d-flex flex-wrap gap-2">
+        <button
+          [routerLink]="'/admin/view-questions/' + q.qid + '/' + q.title"
+          mat-stroked-button
+          color="primary"
+        >
+          All Questions
+        </button>
+        <button mat-stroked-button color="accent">
+          Total Marks: {{ q.maxMarks }}
+        </button>
+        <button mat-stroked-button color="accent">
+          Number Of Questions: {{ q.numberOfQuestions }}
+        </button>
+      </div>
 
-      <button mat-stroked-button color="accent" class="mleft10">
-        Total Marks: {{ q.maxMarks }}
-      </button>
-
-      <button mat-stroked-button color="accent" class="mleft10">
-        Number Of Questions: {{ q.numberOfQuestions }}
-      </button>
-
-      <button mat-stroked-button color="warn" class="mleft10">Attempts</button>
-
-      <!-- why we can't get/access integer value(q.qId) from ts file -->
-      <!--issue solved : qId will be qid -->
-      <button
-        mat-raised-button
-        color="primary"
-        [routerLink]="'/admin/quiz/' + q.qid"
-        class="mleft20"
-      >
-        Update
-      </button>
-
-      <button
-        mat-raised-button
-        (click)="deleteQuiz(q.qid)"
-        color="accent"
-        class="mleft10"
-      >
-        Delete
-      </button>
+      <div class="d-flex flex-wrap gap-2">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="'/admin/quiz/' + q.qid"
+        >
+          Update
+        </button>
+        <button mat-raised-button (click)="deleteQuiz(q.qid)" color="warn">
+          Delete
+        </button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </mat-card>

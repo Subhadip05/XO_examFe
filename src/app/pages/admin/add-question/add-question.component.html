@@ -1,147 +1,179 @@
 <mat-card class="mtop20 color-custom-card">
-  <h2 class="mleft10 mtop10">
-    Add Question to <span style="font-weight: bold">{{ qTitle }}</span> Quiz
-  </h2>
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h2 class="m-0">
+      Add Question to <span style="font-weight: bold">{{ qTitle }}</span> Quiz
+    </h2>
 
-  <!-- {{ question | json}} -->
+    <button
+      matTooltip="Add question"
+      matTooltipPosition="above"
+      mat-mini-fab
+      color="primary"
+      (click)="addQuestion()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
   <mat-card>
-    <mat-card-header>
-      <mat-card-title> Enter the details of the new question: </mat-card-title>
-    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="parentForm" (ngSubmit)="saveQuestion()">
+        <div formArrayName="questionDetailsVo">
+          <mat-expansion-panel
+            *ngFor="let q of questionDetailsArray.controls; let i = index"
+            [formGroupName]="i"
+            class="mat-elevation-z0 mtop10"
+            style="background: transparent; border: 1px solid #a5ecf9"
+            [expanded]="i === 0"
+          >
+            <mat-expansion-panel-header style="padding: 0 16px">
+              <mat-panel-title
+                class="gap-2"
+                style="display: flex; align-items: center"
+              >
+                <h2>Question {{ i + 1 }}</h2>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <mat-card-content class="mtop10">
-      <div class="bootstrap-wrapper">
-        <div class="row">
-          <div class="col-md-11 offset-md-1">
-            <form (submit)="formSubmit()">
-              <!-- content field -->
-              <mat-form-field class="w100" appearance="outline">
-                <mat-label>Enter Question Content</mat-label>
+            <mat-card-header
+              class="d-flex justify-content-between align-items-center w-100 p-3"
+            >
+              <mat-card-title class="m-0">
+                Enter the details of the question:
+              </mat-card-title>
 
-                <textarea
-                  matInput
-                  placeholder="Enter here : "
-                  [(ngModel)]="question.content"
-                  name="content"
-                  rows="2"
-                ></textarea>
-              </mat-form-field>
+              <button
+                matTooltip="Delete this question"
+                matTooltipPosition="above"
+                type="button"
+                mat-mini-fab
+                color="warn"
+                (click)="deleteQuestion(i)"
+                *ngIf="questionDetailsArray.length > 1"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-header>
 
-              <!-- options -->
-              <div class="row">
-                <div class="col-md-6">
-                  <!-- option1 -->
-                  <mat-form-field class="w100" appearance="fill">
-                    <mat-label>Enter Option1</mat-label>
+            <mat-card-content class="mtop10">
+              <div class="bootstrap-wrapper">
+                <div class="row">
+                  <div class="col-md-11 offset-md-1">
+                    <mat-form-field class="w100" appearance="outline">
+                      <mat-label>Enter Question Content</mat-label>
+                      <textarea
+                        matInput
+                        placeholder="Enter here : "
+                        formControlName="content"
+                        rows="2"
+                      ></textarea>
+                    </mat-form-field>
 
-                    <input
-                      type="text"
-                      name="option1"
-                      matInput
-                      placeholder="Enter here : "
-                      [(ngModel)]="question.option1"
-                    />
-                  </mat-form-field>
-                </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                          <mat-label>Enter Option1</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            placeholder="Enter here : "
+                            formControlName="option1"
+                          />
+                        </mat-form-field>
+                      </div>
 
-                <div class="col-md-6">
-                  <!-- option2 -->
-                  <mat-form-field class="w100" appearance="fill">
-                    <mat-label>Enter Option2</mat-label>
+                      <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                          <mat-label>Enter Option2</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            placeholder="Enter here : "
+                            formControlName="option2"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
 
-                    <input
-                      type="text"
-                      name="option2"
-                      matInput
-                      placeholder="Enter here : "
-                      [(ngModel)]="question.option2"
-                    />
-                  </mat-form-field>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                          <mat-label>Enter Option3</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            placeholder="Enter here : "
+                            formControlName="option3"
+                          />
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                          <mat-label>Enter Option4</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            placeholder="Enter here : "
+                            formControlName="option4"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <!-- Select Answer: Read values dynamically from the form group -->
+                    <mat-form-field class="w100" appearance="fill">
+                      <mat-label>Select Answer</mat-label>
+                      <mat-select formControlName="answer">
+                        <mat-option
+                          *ngIf="q.get('option1')?.value"
+                          [value]="q.get('option1')?.value"
+                        >
+                          {{ q.get("option1")?.value }}
+                        </mat-option>
+                        <mat-option
+                          *ngIf="q.get('option2')?.value"
+                          [value]="q.get('option2')?.value"
+                        >
+                          {{ q.get("option2")?.value }}
+                        </mat-option>
+                        <mat-option
+                          *ngIf="q.get('option3')?.value"
+                          [value]="q.get('option3')?.value"
+                        >
+                          {{ q.get("option3")?.value }}
+                        </mat-option>
+                        <mat-option
+                          *ngIf="q.get('option4')?.value"
+                          [value]="q.get('option4')?.value"
+                        >
+                          {{ q.get("option4")?.value }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <!-- option3 -->
-                  <mat-form-field class="w100" appearance="fill">
-                    <mat-label>Enter Option3</mat-label>
-
-                    <input
-                      type="text"
-                      name="option3"
-                      matInput
-                      placeholder="Enter here : "
-                      [(ngModel)]="question.option3"
-                    />
-                  </mat-form-field>
-                </div>
-
-                <div class="col-md-6">
-                  <!-- option4 -->
-                  <mat-form-field class="w100" appearance="fill">
-                    <mat-label>Enter Option4</mat-label>
-
-                    <input
-                      type="text"
-                      name="option4"
-                      matInput
-                      placeholder="Enter here : "
-                      [(ngModel)]="question.option4"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <!-- answer -->
-              <mat-form-field class="w100" appearance="fill">
-                <mat-label>Select Answer</mat-label>
-                <mat-select [(ngModel)]="question.answer" name="answer">
-                  <mat-option
-                    *ngIf="question.option1"
-                    [value]="question.option1"
-                    >{{ question.option1 }}</mat-option
-                  >
-                  <mat-option
-                    *ngIf="question.option2"
-                    [value]="question.option2"
-                    >{{ question.option2 }}</mat-option
-                  >
-                  <mat-option
-                    *ngIf="question.option3"
-                    [value]="question.option3"
-                    >{{ question.option3 }}</mat-option
-                  >
-                  <mat-option
-                    *ngIf="question.option4"
-                    [value]="question.option4"
-                    >{{ question.option4 }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-
-              <!-- button -->
-              <!-- <div class="container text-center mtop10">
-                        <button mat-raised-button color="accent" type="submit">Add Question</button>
-                    </div> -->
-
-              <div class="container d-flex justify-content-center gap-2 mtop20">
-                <button
-                  [routerLink]="'/admin/view-questions/' + qId + '/' + qTitle"
-                  mat-raised-button
-                  color="basic"
-                >
-                  Back
-                </button>
-
-                <button mat-raised-button color="accent" type="submit">
-                  Save
-                </button>
-              </div>
-            </form>
-          </div>
+            </mat-card-content>
+          </mat-expansion-panel>
         </div>
-      </div>
+
+        <!-- Actions -->
+        <div class="container d-flex justify-content-center gap-3 mtop20">
+          <button
+            type="button"
+            [routerLink]="'/admin/view-questions/' + qId + '/' + qTitle"
+            mat-raised-button
+            color="basic"
+          >
+            Back
+          </button>
+
+          <button mat-raised-button color="accent" type="submit">
+            Save All Questions
+          </button>
+        </div>
+      </form>
     </mat-card-content>
   </mat-card>
 </mat-card>

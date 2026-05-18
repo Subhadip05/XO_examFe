@@ -1,0 +1,144 @@
+<mat-card class="mtop20 color-custom-card">
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h2 class="m-0">
+      Update Question of
+      <span style="font-weight: bold">{{ quesDetails?.quiz?.title }}</span> Quiz
+    </h2>
+  </div>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Update the details of the question: </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="mtop20">
+      <div class="bootstrap-wrapper">
+        <div class="row">
+          <div class="col-md-11 offset-md-1">
+            <form [formGroup]="questionForm" (ngSubmit)="updateQuestion()">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Question Content</mat-label>
+                <textarea
+                  matInput
+                  placeholder="Enter here : "
+                  formControlName="content"
+                  rows="2"
+                ></textarea>
+              </mat-form-field>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Enter Option1</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="Enter here : "
+                      formControlName="option1"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Enter Option2</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="Enter here : "
+                      formControlName="option2"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Enter Option3</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="Enter here : "
+                      formControlName="option3"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Enter Option4</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="Enter here : "
+                      formControlName="option4"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Select Answer</mat-label>
+                <mat-select formControlName="answer">
+                  <mat-option
+                    *ngIf="questionForm.get('option1')?.value"
+                    [value]="questionForm.get('option1')?.value"
+                  >
+                    {{ questionForm.get("option1")?.value }}
+                  </mat-option>
+
+                  <mat-option
+                    *ngIf="questionForm.get('option2')?.value"
+                    [value]="questionForm.get('option2')?.value"
+                  >
+                    {{ questionForm.get("option2")?.value }}
+                  </mat-option>
+
+                  <mat-option
+                    *ngIf="questionForm.get('option3')?.value"
+                    [value]="questionForm.get('option3')?.value"
+                  >
+                    {{ questionForm.get("option3")?.value }}
+                  </mat-option>
+
+                  <mat-option
+                    *ngIf="questionForm.get('option4')?.value"
+                    [value]="questionForm.get('option4')?.value"
+                  >
+                    {{ questionForm.get("option4")?.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <div class="container d-flex justify-content-center gap-2 mtop10">
+                <button
+                  [routerLink]="
+                    '/admin/view-questions/' +
+                    quesDetails?.quiz?.qid +
+                    '/' +
+                    quesDetails?.quiz?.title
+                  "
+                  mat-raised-button
+                  color="basic"
+                  type="button"
+                >
+                  Back
+                </button>
+
+                <button
+                  mat-raised-button
+                  color="accent"
+                  type="submit"
+                  [disabled]="questionForm.invalid"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-card>

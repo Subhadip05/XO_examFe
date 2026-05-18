@@ -29,8 +29,8 @@ export class LoginService {
 
   //login user : set token in localstorage
   public loginUser(token : any){
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem("token",token);
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem("token",token);
     }
     return true; 
   }
@@ -38,8 +38,8 @@ export class LoginService {
   //isLogin : user is logged in or not
   public isLoggedIn(){
     let tokenStr;
-    if (typeof localStorage !== 'undefined') {
-      tokenStr = localStorage.getItem("token"); 
+    if (typeof sessionStorage !== 'undefined') {
+      tokenStr = sessionStorage.getItem("token"); 
     }
     if(tokenStr==undefined || tokenStr == '' || tokenStr == null){
       return false;
@@ -49,9 +49,9 @@ export class LoginService {
 
   //logout : remove token from local storage
   public logOut(){
-    if (typeof localStorage !== 'undefined') {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user"); 
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user"); 
     }
     return true;
   }
@@ -59,24 +59,24 @@ export class LoginService {
 
   //get token 
   public getToken(){
-    if (typeof localStorage !== 'undefined') {
-      return localStorage.getItem("token");
+    if (typeof sessionStorage !== 'undefined') {
+      return sessionStorage.getItem("token");
     }
     return true;
   }
 
   //set user details
   public setUser(user : any){
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem("user",JSON.stringify(user));
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem("user",JSON.stringify(user));
     }
   }
 
   //get user details as Json format in local storage
   public getUser(){
     let userStr ;
-    if (typeof localStorage !== 'undefined') {
-      userStr= localStorage.getItem("user");
+    if (typeof sessionStorage !== 'undefined') {
+      userStr= sessionStorage.getItem("user");
     }
     if(userStr != null){
       return JSON.parse(userStr);

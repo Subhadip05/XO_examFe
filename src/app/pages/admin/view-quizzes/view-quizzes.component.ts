@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 export class ViewQuizzesComponent implements OnInit{
 
 
-
   constructor(private _quiz : QuizService){}
 
   ngOnInit(): void {

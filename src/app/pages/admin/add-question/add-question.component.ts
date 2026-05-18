@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import Swal from 'sweetalert2';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-question',
@@ -9,20 +10,11 @@ import Swal from 'sweetalert2';
   styleUrl: './add-question.component.css',
 })
 export class AddQuestionComponent implements OnInit {
+  _fb = inject(FormBuilder);
+  parentForm!: FormGroup;
+
   qId: any;
   qTitle: any;
-  question = {
-    quiz: {
-      qid: '',
-      title: '',
-    },
-    content: '',
-    option1: '',
-    option2: '',
-    option3: '',
-    option4: '',
-    answer: '',
-  };
 
   constructor(
     private _route: ActivatedRoute,
@@ -33,58 +25,101 @@ export class AddQuestionComponent implements OnInit {
   ngOnInit(): void {
     this.qId = this._route.snapshot.params['qid'];
     this.qTitle = this._route.snapshot.params['title'];
-    // console.log(this.qId);
-    this.question.quiz['qid'] = this.qId;
+
+    this.initQuestionsForm();
+    this.addQuestion();
   }
 
-  formSubmit() {
-    // alert("testing");
+  initQuestionsForm() {
+    this.parentForm = this._fb.group({
+      questionDetailsVo: this._fb.array([]),
+    });
+  }
 
-    if (this.question.content.trim() == '' || this.question.content == null) {
-      return;
-    }
-    if (this.question.option1.trim() == '' || this.question.option1 == null) {
-      return;
-    }
-    if (this.question.option2.trim() == '' || this.question.option2 == null) {
-      return;
-    }
-    if (this.question.option3.trim() == '' || this.question.option3 == null) {
-      return;
-    }
-    if (this.question.option4.trim() == '' || this.question.option4 == null) {
+  get questionDetailsArray(): FormArray {
+    return this.parentForm.get('questionDetailsVo') as FormArray;
+  }
+
+  questionDetails(): FormGroup {
+    return this._fb.group({
+      quesId: [null],
+      content: ['', Validators.required],
+      option1: ['', Validators.required],
+      option2: ['', Validators.required],
+      option3: ['', Validators.required],
+      option4: ['', Validators.required],
+      answer: ['', Validators.required],
+      quiz: this._fb.group({
+        qid: [null, Validators.required],
+      }),
+    });
+  }
+
+  deleteQuestion(i?: any) {
+    this.questionDetailsArray.removeAt(i);
+  }
+
+  addQuestion(): void {
+    const newQuestion = this.questionDetails();
+    newQuestion.patchValue({
+      quiz: {
+        qid: this.qId,
+      },
+    });
+
+    this.questionDetailsArray.push(newQuestion);
+    console.log('Add button clicked');
+  }
+
+  saveQuestion() {
+    if (this.parentForm.invalid) {
+      Swal.fire(
+        'Error',
+        'Please fill all required fields in all questions.',
+        'error',
+      );
       return;
     }
 
-    if (this.question.answer.trim() == '' || this.question.answer == null) {
-      return;
-    }
+    const payload = this.questionDetailsArray.value;
+    console.log('Saving question payload: ', payload);
 
-    //form submit
-    this._ques.addQuestion(this.question).subscribe(
-      (data: any) => {
-        Swal.fire('Success', 'Question Added', 'success');
+    Swal.fire({
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      title: 'Are you sure, want to add questions ?',
+    }).then((result) => {
+      // return;
+      this._ques.addQuestions(payload).subscribe({
+        next: (data: any) => {
+          console.log('Saving question response: ', data);
+          Swal.fire('Success', 'Questions Added Successfully', 'success');
+          this._router.navigate([
+            '/admin/view-questions/' + this.qId + '/' + this.qTitle,
+          ]);
+        },
+        error: (error) => {
+          console.log(error);
+          Swal.fire('Error', 'Error in adding questions', 'error');
+        },
+      });
+    });
+  }
+
+  saveUpdatedQuestion(updatedQuestionData: any) {
+    this._ques.updateQuestion(updatedQuestionData).subscribe({
+      next: (data: any) => {
+        console.log('Updated question: ', data);
+        Swal.fire('Success', 'Question Updated Successfully', 'success');
         this._router.navigate([
           '/admin/view-questions/' + this.qId + '/' + this.qTitle,
         ]);
-
-        // this.question = {
-        //   quiz :{
-        //     qid: '',
-        //     title : '',
-        //   },
-        //   content : '',
-        //   option1 : '',
-        //   option2 : '',
-        //   option3 : '',
-        //   option4 : '',
-        //   answer : '',
-        // }
       },
-      (error) => {
+      error: (error) => {
         console.log(error);
-        Swal.fire('Error', 'Error in adding question', 'error');
+        Swal.fire('Error', 'Error in updating question', 'error');
       },
-    );
+    });
   }
 }
