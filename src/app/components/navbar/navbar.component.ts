@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,10 @@ export class NavbarComponent implements OnInit {
   isLoggedIN = false;
   user = null;
 
-  constructor(public login: LoginService) {}
+  constructor(
+    public login: LoginService,
+    private sidebarService: SidebarService,
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIN = this.login.isLoggedIn();
@@ -24,5 +28,9 @@ export class NavbarComponent implements OnInit {
   public logOut() {
     this.login.logOut();
     window.location.reload();
+  }
+
+  toggleMenu() {
+    this.sidebarService.toggleSidebar();
   }
 }

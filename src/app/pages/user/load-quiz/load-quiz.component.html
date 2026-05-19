@@ -20,28 +20,35 @@
               <p class="truncate">{{ q.description }}</p>
             </mat-card-content>
 
-            <mat-card-actions>
-              <button style="margin-left: 5px" mat-button color="primary">
-                Q.Numbers: {{ q.numberOfQuestions }}
-              </button>
-              <button style="margin-left: 5px" mat-button color="accent">
-                Max.Mark: {{ q.maxMarks }}
-              </button>
-              <button
-                style="margin-left: 5px"
-                mat-raised-button
-                color="primary"
-              >
-                View
-              </button>
-              <button
-                style="margin-left: 10px"
-                [routerLink]="'/user-dashboard/instructions/' + q.qid"
-                mat-raised-button
-                color="accent"
-              >
-                Start
-              </button>
+            <mat-card-actions
+              class="w-100 d-flex flex-wrap row-gap-2 align-items-center"
+            >
+              <div class="me-auto d-flex flex-wrap gap-2">
+                <button style="margin-left: 5px" mat-button color="primary">
+                  Q.Numbers: {{ q.numberOfQuestions }}
+                </button>
+                <button style="margin-left: 5px" mat-button color="accent">
+                  Max.Mark: {{ q.maxMarks }}
+                </button>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <!-- <button
+                  style="margin-left: 5px"
+                  mat-raised-button
+                  color="primary"
+                >
+                  View
+                </button> -->
+                <button
+                  style="margin-left: 10px"
+                  [routerLink]="'/user-dashboard/instructions/' + q.qid"
+                  mat-raised-button
+                  color="accent"
+                >
+                  Start
+                </button>
+              </div>
             </mat-card-actions>
           </mat-card>
         </div>

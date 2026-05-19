@@ -1,4 +1,4 @@
-<div class="bootstrap-wrapper">
+<!-- <div class="bootstrap-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
@@ -6,10 +6,25 @@
             </div>
 
             <div class="col-md-8">
-                <!-- <h3>Content</h3> -->
                 <router-outlet></router-outlet>
             </div>
             
+        </div>
+    </div>
+</div> -->
+
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar column: only shows if isSidebarOpen is true -->
+            <div class="col-md-3" *ngIf="isSidebarOpen">
+                <app-sidebar></app-sidebar>
+            </div>
+
+            <!-- Dynamic class: Expands to 12 columns if sidebar is hidden -->
+            <div [class]="isSidebarOpen ? 'col-md-9' : 'col-md-12'">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>
